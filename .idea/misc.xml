@@ -6,6 +6,9 @@
       <list>
         <option value="$PROJECT_DIR$/clsass01-servlet/pom.xml" />
         <option value="$PROJECT_DIR$/clsass02-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/class03-response/pom.xml" />
+        <option value="$PROJECT_DIR$/class02-request/pom.xml" />
+        <option value="$PROJECT_DIR$/class01-servlet/pom.xml" />
       </list>
     </option>
   </component>
