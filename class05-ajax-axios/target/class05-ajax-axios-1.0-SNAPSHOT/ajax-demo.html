@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax 请求示例 - 原生的js 异步请求</title>
+</head>
+<body>
+<h1>下方是服务器返回的数据</h1>
+<h2 id="info"></h2>
+
+<script>
+    // 创建的核心对象
+    let xHttp ;
+    if(window.XMLHttpRequest){
+        xHttp = new XMLHttpRequest() ;
+    }else{
+        xHttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    // 发起异步请求
+    xHttp.open("GET" , "http://localhost:8080/ajaxServlet")
+    xHttp.send() ;
+    // 获取响应
+    xHttp.onreadystatechange = function (){
+        if(this.status === 200){
+            setTimeout(()=>{
+                document.getElementById("info").innerHTML = this.responseText ;
+            },5000)
+
+        }
+    }
+</script>
+
+</body>
+</html>

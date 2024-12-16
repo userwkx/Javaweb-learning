@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/book-online(1)/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/book-online(1)/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/book-online/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/book-online/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/brand-list/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/brand-list/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class-oa/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class-oa/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/class01-servlet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/class01-servlet/src/main/java/com/example/clsass01servlet/ServletDemo1.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/class01-servlet/src/main/resources" charset="UTF-8" />
@@ -8,5 +16,13 @@
     <file url="file://$PROJECT_DIR$/class02-request/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/class03-response/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/class03-response/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class04-cookie-sessing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class04-cookie-sessing/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class05-ajax-axios/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class05-ajax-axios/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class06-filter-listener/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/class06-filter-listener/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oa-system/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oa-system/src/main/resources" charset="UTF-8" />
   </component>
 </project>

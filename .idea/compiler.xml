@@ -2,14 +2,25 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="class02-request" />
         <module name="class01-servlet" />
+        <module name="class05-ajax-axios" />
+        <module name="class06-filter-listener" />
+        <module name="brand-list" />
+        <module name="class-oa" />
+        <module name="book-online" />
+        <module name="oa-system" />
+        <module name="class02-request" />
         <module name="class03-response" />
+        <module name="class04-cookie-sessing" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="book-online (1)" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

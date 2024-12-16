@@ -9,8 +9,25 @@
         <option value="$PROJECT_DIR$/class03-response/pom.xml" />
         <option value="$PROJECT_DIR$/class02-request/pom.xml" />
         <option value="$PROJECT_DIR$/class01-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/class04-cookie-sessing/pom.xml" />
+        <option value="$PROJECT_DIR$/book-online/pom.xml" />
+        <option value="$PROJECT_DIR$/class05-ajax-axios/pom.xml" />
+        <option value="$PROJECT_DIR$/brand-list/pom.xml" />
+        <option value="$PROJECT_DIR$/book-online(1)/pom.xml" />
+        <option value="$PROJECT_DIR$/class06-filter-listener/pom.xml" />
+        <option value="$PROJECT_DIR$/class-oa/pom.xml" />
+        <option value="$PROJECT_DIR$/oa-system/pom.xml" />
+        <option value="$PROJECT_DIR$/class-oa(1)/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/book-online(1)/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://mybatis.org/dtd/mybatis-3-config.dtd" location="$PROJECT_DIR$" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

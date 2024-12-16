@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?><!--DTD 文档类型申明-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gh.com.oasystem.mapper.DepartmentMapper">
+
+
+    <select id="queryDepartmentById" resultType="gh.com.oasystem.model.entity.Department">
+        select * from adm_department where department_id = #{departmentId}
+    </select>
+    <select id="queryDepartmentIdByEmployeeId" resultType="java.lang.Long">
+        select sn.department_id from adm_employee sn
+                                         left join adm_department srn on sn.department_id = srn.department_id
+        where sn.employee_id = #{employeeId}
+    </select>
+</mapper>

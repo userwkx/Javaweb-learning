@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+<div>
+    <label for="username">
+        <input type="text" name="username" value="admin" id="username">
+    </label>
+    <span id="tip">显示注册结果</span>
+</div>
+
+<script >
+    document.getElementById("username").onblur=function (){
+    //     获取输入的用户名
+        const username = this.value ;
+    //     显示注册结果
+        let tip = document.getElementById("tip") ;
+    //     设置样式为行内样式
+        this.style.display = "inline"
+    //     向后端发起网络请求
+        if(window.XMLHttpRequest){
+            xHttp = new XMLHttpRequest() ;
+        }else{
+            xHttp = new ActiveXObject("Microsoft.XMLHTTP")
+        }
+        xHttp.open("GET" , "http://localhost:8080/check?username="+username)
+        xHttp.send() ;
+        xHttp.onreadystatechange = function (){
+            if(this.status === 200){
+                if(this.responseText==="true"){
+                    tip.innerHTML = "用户名可用"
+                    tip.style.color = "green"
+                }else{
+                    tip.innerHTML = "用户名已被占用"
+                    tip.style.color="red"
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

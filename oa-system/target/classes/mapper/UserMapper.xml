@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?><!--DTD 文档类型申明-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gh.com.oasystem.mapper.UserMapper">
+    <select id="selectUserByUsername" resultType="gh.com.oasystem.model.entity.User">
+        select * from sys_user where username = #{username}
+    </select>
+
+    <select id="selectUserById" resultType="java.util.Map">
+        select role_id as roleId, user_id as userId
+        from sys_role_user where user_id = #{userId}
+    </select>
+</mapper>

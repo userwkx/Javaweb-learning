@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios 发送 POST 方式的请求</title>
+</head>
+<body>
+<h1>axios 发送 POST 方式的请求</h1>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios({
+        method:"post",
+        url:"http://localhost:8080/axiosServlet?username=zhangsan",
+        data:"username=lisi"
+    }).then(function (resp){
+        alert(resp.data)
+    }).catch(function (err){
+        console.log(err)
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?><!--DTD 文档类型申明-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gh.com.oasystem.mapper.RecordMapper">
+
+
+    <select id="queryLeaveRecord" resultType="gh.com.oasystem.model.vo.RecordLeaveVO">
+        SELECT DISTINCT
+            lf.form_id,
+            lf.employee_id,
+            lf.form_type,
+            lf.start_time,
+            lf.end_time,
+            lf.reason,
+            lf.create_time,
+            ae.`name` as operatorName,
+            ad.department_name as departmentName,
+            pf.state,
+            pf.result,
+            pf.is_last
+
+        FROM
+            adm_leave_form lf,
+            adm_process_flow pf,
+            adm_employee ae,
+            adm_department ad
+        WHERE
+            lf.employee_id = #{eid}
+          AND pf.action='audit'
+          AND lf.form_id = pf.form_id
+          AND ae.department_id = ad.department_id
+          AND pf.operator_id=ae.employee_id
+
+
+
+
+    </select>
+
+</mapper>

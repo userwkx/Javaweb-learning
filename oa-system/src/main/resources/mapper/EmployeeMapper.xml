@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?><!--DTD 文档类型申明-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gh.com.oasystem.mapper.EmployeeMapper">
+
+
+
+
+    <select id="queryEmployeeByemployeeId" resultType="gh.com.oasystem.model.entity.Employee">
+        select * from adm_employee where employee_id = #{employeeId}
+    </select>
+
+    <select id="queryEmployeeIdByUserId" resultType="java.lang.Long">
+        select sn.employee_id from sys_user sn
+                                       left join adm_employee srn on sn.employee_id = srn.employee_id
+        where sn.user_id = #{userId}
+    </select>
+    <select id="getBoss" resultType="gh.com.oasystem.model.entity.Employee">
+        select * from  adm_employee where level=8
+    </select>
+    <select id="getLeader" resultType="gh.com.oasystem.model.entity.Employee">
+        select *
+        from adm_employee
+        where department_id=#{departmentId} and level = 7
+    </select>
+</mapper>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请假记录</title>
+    <!-- Import style -->
+    <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css"/>
+    <!-- Import Vue 3 -->
+    <script src="//unpkg.com/vue@3"></script>
+    <!-- Import component library -->
+    <script src="//unpkg.com/element-plus"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/element-plus/dist/locale/zh-cn"></script>
+    <style>
+        .info .el-col, .info .el-select, .info .el-input {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .w100 {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <h2>请假记录</h2>
+    <el-table class="w100" ref="singleTable" :data="tableData" highlight-current-row @row-click="handleCurrentChange">
+        <el-table-column type="index" width="50"></el-table-column>
+        <el-table-column property="ctime" label="申请时间" width="180"></el-table-column>
+        <el-table-column property="ftype" label="类型" width="120"></el-table-column>
+        <el-table-column property="operatorName" label="经办人" width="120"></el-table-column>
+        <el-table-column property="departmentName" label="部门" width="120"></el-table-column>
+        <el-table-column property="stime" label="起始时间" width="180"></el-table-column>
+        <el-table-column property="etime" label="结束时间" width="180"></el-table-column>
+        <el-table-column property="reason" label="请假原因"></el-table-column>
+        <el-table-column property="state" label="状态" width="120"></el-table-column>
+        <el-table-column property="isLast" label="总进程"></el-table-column>
+
+    </el-table>
+
+
+
+</div>
+
+<script>
+
+    const Main = {
+        data() {
+            return {
+                dialogFormVisible: false,
+                form: {
+                    result: "",
+                    reason: "",
+
+                },
+                formLabelWidth: '120px',
+                tableData: [],
+                currentRow: null
+            }
+        },
+        methods: {
+            handleCurrentChange(val) {
+                this.currentRow = val;
+                console.info(val);
+                this.dialogFormVisible = true;
+            },
+            formatDate(time) {
+                return `${time[0]}-${time[1]}-${time[2]} ${time[3]}时`
+            },
+            onSubmit(formName) {
+                // this.$ref[formName].validate(valid => {
+                //     if (valid) {
+                let urlSearchParams = new URLSearchParams();
+                urlSearchParams.append("formId", this.currentRow.formId)
+                urlSearchParams.append("result", this.form.result)
+                urlSearchParams.append("reason", this.form.reason)
+                urlSearchParams.append("eid", localStorage.getItem("eid"))
+
+                axios.post("/api/leave/audit", urlSearchParams).then((res) => {
+                    let data = res.data
+                    if (data.code === "0") {
+                        this.$alert("请假已审批结束", {
+                            callback: function () {
+                                window.location.href = "/notice.html"
+                            }
+                        })
+                    } else {
+                        this.$message.error({
+                            message: data.message
+                        })
+                    }
+                })
+            }
+
+            // })
+            // }
+        },
+        mounted() {
+            axios.get(`/api/record?eid=${localStorage.getItem("eid")}`).then((res) => {
+                let data = res.data;
+                console.log("Hello, World!");
+                console.log(res);
+                console.log(data);
+                if (data.code === "0") {
+                    this.tableData.splice(0, this.tableData.length)
+                    const formList = data.data.list
+
+                    formList.forEach(item => {
+
+                        switch (item.formType) {
+                            case 1:
+                                item.ftype = "事假";
+                                break
+                            case 2:
+                                item.ftype = "病假";
+                                break
+                            case 3:
+                                item.ftype = "工伤假";
+                                break
+                            case 4:
+                                item.ftype = "婚假";
+                                break
+                            case 5:
+                                item.ftype = "产假";
+                                break
+                            case 6:
+                                item.ftype = "丧假";
+                                break
+                        }
+                        switch (item.isLast) {
+                            case 0:
+                                item.isLast = "审批进行中";
+                                break
+                            case 1:
+                                item.isLast = "审批已结束";
+                                break
+                        }
+                        item.stime = this.formatDate(item.startTime)
+                        item.etime = this.formatDate(item.endTime)
+                        item.ctime = this.formatDate(item.createTime)
+                        this.tableData.push(item)
+                        console.log(item)
+                    })
+                } else {
+                    this.$message.error({message: data.message})
+                }
+            })
+        }
+    };
+    const app = Vue.createApp(Main);
+    app.use(ElementPlus);
+    app.mount("#app")
+</script>
+
+</body>
+</html>
